@@ -28,28 +28,23 @@ namespace AppCompras.Helper
         //Update
         public void update(Produto p)
         {
-            string sql = "UPDATE Produto SET Desc=?, Quant=?, Preco=?"
+            string sql = "UPDATE Produto SET Desc=?, Quant=?, Preco=? WHERE id= ? ";
+            _conec.QueryAsync<Produto>(sql, p.desc, p.quant, p.preco, p.id);
         }
 
-
-        //getById
-        public Task<Produto> getById(int id)
-        {
-            return new Produto();
-        }
 
 
         //getAll
         public Task<List<Produto>> getAll()
         {
-
+            return _conec.Table<Produto>().ToListAsync();
         }
 
 
         //delete
-        public void delete(int id)
+        public Task<int> delete(int id)
         {
-
+            _conec.Table<Produto>().DeleteAsync(i => i.id == id);
         }
     }
 }
