@@ -44,7 +44,13 @@ namespace AppCompras.Helper
         //delete
         public Task<int> delete(int id)
         {
-            _conec.Table<Produto>().DeleteAsync(i => i.id == id);
+            return _conec.Table<Produto>().DeleteAsync(i => i.id == id);
+        }
+
+        public Task<List<Produto>> search(string q)
+        {
+            string sql = "SELECT FROM * Produto WHERE Desc LIKE '%" + q + "%'";
+            return _conec.QueryAsync<Produto>(sql);
         }
     }
 }

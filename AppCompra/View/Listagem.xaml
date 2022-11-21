@@ -10,9 +10,38 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar x:Name="txt_busca" Placeholder="Qual produto?"
+                       TextChanged="txt_busca_TextChanged"/>
+
+            <RefreshView x:Name="ref_carregando" IsRefreshing="True">
+                <ListView x:Name="lst_prod">
+                    <ListView.Header>
+                        <Grid RowDefinitions="Auto"
+                              ColumnDefinitions="*, Auto, Auto">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Descrição"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Qnt"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Preço"/>
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
+                                </ViewCell.ContextActions>
+                                <Grid RowDefinitions="Auto"
+                                      ColumnDefinitions="*, Auto, Auto">
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Desc}"/>
+                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Quant}"/>
+                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Preco}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </RefreshView>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
