@@ -26,10 +26,10 @@ namespace AppCompras.Helper
 
 
         //Update
-        public void update(Produto p)
+        public Task<List<Produto>> update(Produto p)
         {
             string sql = "UPDATE Produto SET Desc=?, Quant=?, Preco=? WHERE id= ? ";
-            _conec.QueryAsync<Produto>(sql, p.desc, p.quant, p.preco, p.id);
+            return _conec.QueryAsync<Produto>(sql, p.desc, p.quant, p.preco, p.id);
         }
 
 

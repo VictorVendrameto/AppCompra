@@ -99,5 +99,13 @@ namespace AppCompra.View
                 ref_carregando.IsRefreshing = false;
             });
         }
+
+        private void lst_prod_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new Edit
+            {
+                BindingContext = (Produto)e.SelectedItem
+            });
+        }
     }
 }

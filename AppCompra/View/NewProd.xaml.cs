@@ -21,7 +21,7 @@ namespace AppCompra.View
         {
             try
             {
-                produto p = new produto
+                Produto p = new Produto
                 {
                    desc = txt_desc.Text,
                    quant = Convert.ToDouble(txt_quant.Text),
