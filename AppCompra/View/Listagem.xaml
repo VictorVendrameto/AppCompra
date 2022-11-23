@@ -13,8 +13,10 @@
             <SearchBar x:Name="txt_busca" Placeholder="Qual produto?"
                        TextChanged="txt_busca_TextChanged"/>
 
+            
+            
             <RefreshView x:Name="ref_carregando" IsRefreshing="True">
-                <ListView x:Name="lst_prod" ItemSelected="lst_prod_ItemSelected">
+                <ListView x:Name="list_produto" ItemSelected="lst_prod_ItemSelected">
                     <ListView.Header>
                         <Grid RowDefinitions="Auto"
                               ColumnDefinitions="*, Auto, Auto">
@@ -23,12 +25,17 @@
                             <Label Grid.Row="0" Grid.Column="2" Text="Preço"/>
                         </Grid>
                     </ListView.Header>
+                    
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate>
+                            
+                            
                             <ViewCell>
                                 <ViewCell.ContextActions>
                                     <MenuItem Text="Remover" Clicked="MenuItem_Clicked"/>
                                 </ViewCell.ContextActions>
+                                
                                 <Grid RowDefinitions="Auto"
                                       ColumnDefinitions="*, Auto, Auto">
                                         <Label Grid.Row="0" Grid.Column="0" Text="{Binding desc}"/>

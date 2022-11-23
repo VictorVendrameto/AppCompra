@@ -11,7 +11,7 @@ namespace AppCompras.Helper
     public class SQLiteDB
     {
         readonly SQLiteAsyncConnection _conec;
-        public SQLiteDBH(string path)
+        public SQLiteDB(string path)
         {
             _conec = new SQLiteAsyncConnection(path);
             _conec.CreateTableAsync<Produto>().Wait();
